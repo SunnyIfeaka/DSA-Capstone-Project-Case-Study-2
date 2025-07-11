@@ -23,4 +23,17 @@ The core business questions were grouped into two scenarios:
 
 - **SQL Server** – for all data querying and analysis
 - **Excel** – for initial file review.
-- **GitHub** – for version control and reporting. 
+- **GitHub** – for version control and reporting.
+
+ ## Data Analysis
+ 
+#### Case Scenario I
+1. Which product category had the highest sales?
+```
+select Product_Category, sum(sales) as Total_Sales
+from [KMS Sql Case Study]
+group by Product_Category
+order by Total_Sales desc
+``` 
+ 
+ 
