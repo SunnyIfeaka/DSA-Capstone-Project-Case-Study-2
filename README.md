@@ -27,7 +27,7 @@ The core business questions were grouped into two scenarios:
 
  ## Data Analysis
  
-#### Case Scenario I
+### Case Scenario I
 
 *1. Which product category had the highest sales?*
 ```
@@ -122,3 +122,84 @@ order by Total_Sales desc
 - Low transaction volumes suggest that KMS may not be top-of-mind or competitively priced for their needs.
 - Some may only buy low-ticket items or one-off purchases, leading to poor lifetime value.
 
+
+*KMS incurred the most shipping cost using which shipping method?*
+```
+select Ship_Mode, sum(Shipping_Cost) as Total_Shipping_Cost
+from [KMS Sql Case Study]
+group by Ship_Mode
+order by Total_Shipping_Cost desc
+```
+
+
+Analyzing the total shipping cost by shipping method revealed that:
+- **Delivery Truck** accounted for the **highest total shipping cost** (₦51,971.94),
+- Followed by **Regular Air** and **Express Air**
+
+### Interpretation & Business Implications:
+
+- **Delivery Truck**, while likely used for bulk or long-distance shipments, is the **most expensive overall**, even though it's considered economical on a per-unit basis.
+- This suggests it may be overused or inefficiently routed in certain scenarios.
+- It’s possible that large-volume or lower-priority orders are defaulting to this method, inflating total logistics spend.
+
+
+### Case Scenario II
+
+*6. Who are the most valuable customers, and what products or services do they typically purchase?*
+```
+select Customer_Name, sum(Sales) as Total_Sales
+from [KMS Sql Case Study]
+group by Customer_Name
+order by Total_Sales desc
+
+select Product_Category, count(*) as Purchase_Count
+from [KMS Sql Case Study]
+where Customer_Name in (
+    select top 10 Customer_Name
+    from [KMS Sql Case Study]
+    group by Customer_Name
+    order by sum(Sales) desc
+    )
+group by Product_Category
+order by Purchase_Count desc
+
+
+Analysis of total sales by customer between 2009 and 2012 revealed the top 10 highest revenue-generating customers:
+
+#### Top 5 by Total Sales:
+- **Emily Phan**
+- **Deborah Brumfield**
+- **Roy Skaria**
+- **Sylvia Foulston**
+- **Grant Carroll**
+
+They accounted for a significant portion of total revenue during the period.
+
+#### Products They Typically Purchase:
+- **Office Supplies** – the most popular category among high-value customers
+- **Furniture** – a consistent choice across all top customers
+- **Technology** – occasionally purchased alongside other categories
+
+**###  Interpretation & Business Implications:**
+
+- These customers are **multi-category buyers**, indicating a higher trust level in KMS's product range.
+- They likely represent **repeat clients** or **bulk-ordering entities** (e.g., offices, resellers).
+- Their loyalty suggests that **consistent service and availability** influence retention.
+
+### ✅ Recommendation:
+
+- Create a **VIP Customer Program** with exclusive benefits, such as early access to new tech products or preferred shipping.
+- Offer **personalized bundles** based on their historic buying patterns.
+- Track their lifecycle and develop **customer success strategies** to further increase lifetime value.
+
+### 🚀 Strategic Opportunity:
+Leverage these customers as brand advocates and use their behavior to model outreach to similar profile prospects.
+
+*7. Which small business customer had the highest sales?*
+```
+select Customer_Name, sum(Sales) as Total_Sales
+from [KMS Sql Case Study]
+where Customer_Segment = 'Small Business'
+group by Customer_Name
+order by Total_Sales desc
+```
