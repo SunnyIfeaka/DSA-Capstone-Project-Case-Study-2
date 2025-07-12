@@ -162,7 +162,7 @@ where Customer_Name in (
     )
 group by Product_Category
 order by Purchase_Count desc
-
+```
 
 Analysis of total sales by customer between 2009 and 2012 revealed the top 10 highest revenue-generating customers:
 
@@ -186,14 +186,6 @@ They accounted for a significant portion of total revenue during the period.
 - They likely represent **repeat clients** or **bulk-ordering entities** (e.g., offices, resellers).
 - Their loyalty suggests that **consistent service and availability** influence retention.
 
-### ✅ Recommendation:
-
-- Create a **VIP Customer Program** with exclusive benefits, such as early access to new tech products or preferred shipping.
-- Offer **personalized bundles** based on their historic buying patterns.
-- Track their lifecycle and develop **customer success strategies** to further increase lifetime value.
-
-### 🚀 Strategic Opportunity:
-Leverage these customers as brand advocates and use their behavior to model outreach to similar profile prospects.
 
 *7. Which small business customer had the highest sales?*
 ```
@@ -203,3 +195,33 @@ where Customer_Segment = 'Small Business'
 group by Customer_Name
 order by Total_Sales desc
 ```
+
+
+The analysis identified **Dennis Kane** as the top customer in the **Small Business** segment between 2009 and 2012, with a total spend of **₦75,967.59**.
+
+### 💡 Interpretation & Business Implications:
+
+- **Dennis Kane’s spending level is relatively close to corporate customers**, indicating strong business needs and consistent ordering behavior.
+- His purchasing activity shows Small Business customers can be **just as profitable as Corporate clients** if nurtured effectively.
+- High spending may indicate trust in product quality, service, or delivery reliability.
+
+
+*8. Which Corporate Customer placed the most number of orders in 2009 – 2012?*
+```
+select Customer_Name, count(distinct Order_ID) as Total_Orders
+from [KMS Sql Case Study]
+where Customer_Segment = 'corporate'
+group by Customer_Name
+order by Total_Orders desc
+```
+
+
+After filtering for Corporate segment customers, **Adam Hart** and **Roy Skaria** were identified as the customers with the **highest number of unique orders** — consistently placing **18 separate orders** between 2009 and 2012.
+
+###  Interpretation & Business Implications:
+
+- Their frequent purchases suggest a **strong ongoing business relationship** and a high level of operational dependency on KMS.
+- Although total spend may not be the highest, the consistent ordering behavior is ideal for **predictable revenue flow**.
+
+
+
