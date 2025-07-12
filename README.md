@@ -1,9 +1,12 @@
 # DSA-Capstone-Project-Case-Study-2-Kultra-Mega-Stores-Inventory.
 DSA Capstone data analysis project report for Kultra Mega Stores
 ## Kultra Mega Stores Inventory Analysis (2009–2012)
+
 ### Project Overview
 This project was completed as part of a capstone requirement for the **DSA Data Analysis Class**. Kultra Mega Stores (KMS) is a Nigerian-based office supplies and furniture retailer headquartered in Lagos. As a **Business Intelligence Analyst** supporting the Abuja division, I was tasked with analyzing order and return data between 2009 and 2012 to uncover actionable business insights.
-### 🎯 Objectives
+
+###  Objectives
+
 The core business questions were grouped into two scenarios:
 #### Case Scenario I
 1. Which product category had the highest sales? 
@@ -91,7 +94,7 @@ from [KMS Sql Case Study]
 where Product_Sub_Category = 'appliances' and Region = 'Ontario'
 ```
 
-The analysis of product-category sales by province revealed that **₦202,346.84** worth of **Appliances** were sold in **Ontario** between 2009 and 2012.
+The analysis of product-category sales by province revealed that **202,346.84** worth of **Appliances** were sold in **Ontario** between 2009 and 2012.
 
 ###  Interpretation & Business Implications:
 
@@ -123,7 +126,7 @@ order by Total_Sales desc
 - Some may only buy low-ticket items or one-off purchases, leading to poor lifetime value.
 
 
-*KMS incurred the most shipping cost using which shipping method?*
+*5. KMS incurred the most shipping cost using which shipping method?*
 ```
 select Ship_Mode, sum(Shipping_Cost) as Total_Shipping_Cost
 from [KMS Sql Case Study]
@@ -133,7 +136,7 @@ order by Total_Shipping_Cost desc
 
 
 Analyzing the total shipping cost by shipping method revealed that:
-- **Delivery Truck** accounted for the **highest total shipping cost** (₦51,971.94),
+- **Delivery Truck** accounted for the **highest total shipping cost** (51,971.94),
 - Followed by **Regular Air** and **Express Air**
 
 ### Interpretation & Business Implications:
@@ -180,7 +183,7 @@ They accounted for a significant portion of total revenue during the period.
 - **Furniture** – a consistent choice across all top customers
 - **Technology** – occasionally purchased alongside other categories
 
-**###  Interpretation & Business Implications:**
+###  Interpretation & Business Implications:
 
 - These customers are **multi-category buyers**, indicating a higher trust level in KMS's product range.
 - They likely represent **repeat clients** or **bulk-ordering entities** (e.g., offices, resellers).
