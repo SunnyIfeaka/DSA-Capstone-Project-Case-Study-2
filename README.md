@@ -200,7 +200,7 @@ order by Total_Sales desc
 ```
 
 
-The analysis identified **Dennis Kane** as the top customer in the **Small Business** segment between 2009 and 2012, with a total spend of **₦75,967.59**.
+The analysis identified **Dennis Kane** as the top customer in the **Small Business** segment between 2009 and 2012, with a total spend of **75,967.59**.
 
 ###  Interpretation & Business Implications:
 
