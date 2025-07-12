@@ -199,7 +199,7 @@ order by Total_Sales desc
 
 The analysis identified **Dennis Kane** as the top customer in the **Small Business** segment between 2009 and 2012, with a total spend of **₦75,967.59**.
 
-### 💡 Interpretation & Business Implications:
+###  Interpretation & Business Implications:
 
 - **Dennis Kane’s spending level is relatively close to corporate customers**, indicating strong business needs and consistent ordering behavior.
 - His purchasing activity shows Small Business customers can be **just as profitable as Corporate clients** if nurtured effectively.
@@ -224,4 +224,104 @@ After filtering for Corporate segment customers, **Adam Hart** and **Roy Skaria*
 - Although total spend may not be the highest, the consistent ordering behavior is ideal for **predictable revenue flow**.
 
 
+*9. Which consumer customer was the most profitable one?*
+```
+select Customer_Name, sum(Profit) as Total_Profit
+from [KMS Sql Case Study]
+where Customer_Segment = 'consumer'
+group by Customer_Name
+order by Total_Profit desc
+```
+
+
+Among all **Consumer segment** customers, **Emily Phan** delivered the **highest total profit** over the 2009–2012 period.
+
+###  Interpretation & Business Implications:
+
+- Emily Phan likely purchased **high-margin products**, or placed large-value orders with minimal discounts and low return rates.
+- She may represent a **loyal retail buyer** with consistent or premium purchasing habits.
+
+
+10. Which customer returned items, and what segment do they belong to?
+```
+select distinct [KMS Sql Case Study].Customer_Name, 
+				[KMS Sql Case Study].Customer_Segment
+from [KMS Sql Case Study]
+JOIN  Order_Status 
+on [KMS Sql Case Study].Order_ID = Order_Status.Order_ID
+where Order_Status.Status = 'Returned'
+```
+
+
+Joining return data with the main order data revealed that **customers from all segments**—Consumer, Small Business, and Corporate—returned items between 2009 and 2012.
+
+###  Interpretation & Business Implications:
+
+- Returns were not concentrated in one segment, indicating that **product or delivery issues may be system-wide** rather than segment-specific.
+- Some top customers (like Emily Phan and Adam Hart) were also involved in returns — showing that **even high-value clients** experience dissatisfaction.
+
+
+*11. If the delivery truck is the most economical but the slowest shipping method and Express Air is the fastest but the most expensive one, do you think the company appropriately spent shipping costs based on the Order Priority? Explain your answer*
+```
+select Order_Priority, Ship_Mode, count(*) as Orders, sum(Shipping_Cost) as Total_Shipping_Cost
+from [KMS Sql Case Study]
+group by Order_Priority, Ship_Mode
+order by Order_Priority, Ship_Mode
+```
+
+
+Shipping methods were not consistently used based on order urgency. Analysis revealed that:
+
+- **Express Air** (the fastest and most expensive option) was used for many **Low** and **Not Specified** priority orders.
+- **Delivery Truck** (slowest and most economical) was not exclusively used for **Low** priority or bulk orders.
+- **Regular Air** and **Delivery Truck** were often used interchangeably, regardless of priority.
+
+###  Interpretation & Business Implications:
+
+- There is **no clear cost control policy** for aligning shipping methods with order urgency.
+- This results in **overspending on logistics**, especially for non-urgent orders.
+- The company is likely **losing margin** on low-priority orders due to unnecessary shipping expense.
+
+
+
+##  Overall Summary
+
+The analysis of Kultra Mega Stores' order data from 2009 to 2012 across product categories, customer segments, regions, and shipping methods revealed several critical insights:
+
+- **Technology** products, despite not being a core advertised focus, contributed the highest sales.
+- **Ontario, West, and Prairie** were top-performing regions, while **Yukon, Northwest Territories, and Nunavut** lagged significantly.
+- The top 10 customers (across all segments) showed diverse and valuable purchasing patterns, while the bottom 10 revealed disengagement and low profitability.
+- Shipping methods were frequently mismatched with order priorities, resulting in overspending.
+- Returns were spread across all customer segments, including high-value clients — indicating potential gaps in service quality or fulfillment.
+
+---
+
+##  Strategic Recommendations
+
+### 1. **Realign Product Strategy with Actual Revenue Drivers**
+- Increase promotion and bundling around **Technology products**.
+- Position KMS as an “**All-in-One Office Solutions**” provider (furniture, office supplies, and technology).
+
+### 2. **Activate Underperforming Regions**
+- Launch low-cost pilots or localized campaigns in **Yukon, NWT, and Nunavut** to assess market potential.
+
+### 3. **Segment Customer Loyalty Programs**
+- Offer tiered incentives for **high-value customers** (e.g., Emily Phan, Dennis Kane, Adam Hart).
+- Design **reactivation campaigns** for bottom 10 customers using tailored bundles or discounts.
+
+### 4. **Optimize Shipping Cost Controls**
+- Enforce strict rules aligning **Order Priority to Ship Mode** (e.g., Delivery Truck for Low, Express for Critical only).
+- Audit shipping patterns quarterly to flag inefficiencies.
+
+### 5. **Improve Return Management & Quality Control**
+- Investigate return root causes and implement **pre-shipment checks**.
+- Follow up personally with returning customers to **repair loyalty**.
+
+---
+
+##  Business Outcome
+
+If these strategies are implemented:
+- KMS can expect an increase in **customer retention, regional sales balance, and margin protection**.
+- Aligning operations with data will position KMS as a **more agile, profitable, and customer-centric business**.
 
