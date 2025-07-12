@@ -61,21 +61,21 @@ order by Total_Sales desc
  
 The analysis of total sales across Canadian regions revealed the following:
 
-### Top 3 Regions by Sales:
+##### Top 3 Regions by Sales:
 - **West**
 - **Ontario**
 - **Prairie**
 
 These regions collectively contribute the highest revenue to KMS, indicating strong market presence and customer engagement.
 
-###  Bottom 3 Regions by Sales:
+#####  Bottom 3 Regions by Sales:
 - **Yukon**
 - **Northwest Territories**
 - **Nunavut**
 
 These territories generated the least revenue during the 2009–2012 period, showing limited penetration or purchasing activity.
 
-###  Interpretation & Business Implications:
+#####  Interpretation & Business Implications:
 
 - **Strongholds Identified**  
   The top regions should remain strategic focus areas for retention, upselling, and pilot programs for new products.
@@ -83,8 +83,42 @@ These territories generated the least revenue during the 2009–2012 period, sho
 - **Market Development Opportunity**  
   The bottom 3 regions represent **underserved or untapped markets**. Limited logistics, awareness, or infrastructure may be restricting demand.
 
-### Recommendation:
-- Run market research to understand low engagement in Yukon, Northwest Territories, and Nunavut.
-- Explore a partnership with local distributors or incentives to lower shipping barriers.
-- Test targeted campaigns or promotions to increase brand visibility in these underperforming territories.
+
+*3. What were the total sales of appliances in Ontario?*
+```
+select sum(sales) as Total_Sales
+from [KMS Sql Case Study]
+where Product_Sub_Category = 'appliances' and Region = 'Ontario'
+```
+
+The analysis of product-category sales by province revealed that **₦202,346.84** worth of **Appliances** were sold in **Ontario** between 2009 and 2012.
+
+###  Interpretation & Business Implications:
+
+- **Strong Category Performance in Key Region**  
+  Ontario, being one of KMS’s top revenue-generating regions, also shows significant interest in appliance products — a category not explicitly mentioned in KMS's specialization.
+
+- **Cross-Selling Opportunity**  
+  Since Ontario is a high-performing region and Appliances have strong sales there, KMS can explore bundling **Appliances with Furniture or Office Supplies** to boost overall revenue per transaction.
+
+
+*4. Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers*
+```
+select Customer_Name, sum(sales) as Total_Sales
+from [KMS Sql Case Study]
+group by Customer_Name
+order by Total_Sales desc
+```
+
+ An analysis of the bottom 10 customers by total sales revealed:
+- Very **low order frequency**
+- In some cases, **negative or minimal profit**
+- A spread across various segments (Consumer, Small Business, etc.)
+- Limited purchase of high-margin categories like Technology or Furniture
+
+###  Interpretation & Business Implications:
+
+- These customers are **currently inactive or disengaged**, but represent a potential revenue stream if reactivated properly.
+- Low transaction volumes suggest that KMS may not be top-of-mind or competitively priced for their needs.
+- Some may only buy low-ticket items or one-off purchases, leading to poor lifetime value.
 
