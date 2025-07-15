@@ -1,4 +1,4 @@
-# DSA-Capstone-Project-Case-Study-2-Kultra-Mega-Stores-Inventory.
+# Kultra-Mega-Stores-Inventory DSA-Capstone-Project-Case-Study-2.
 DSA Capstone data analysis project report for Kultra Mega Stores
 ## Kultra Mega Stores Inventory Analysis (2009–2012)
 
